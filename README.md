@@ -24,14 +24,6 @@ It registers the fonts across supported targets when you call `UseIconFonts()` (
 dotnet add package IconFont.Maui.FluentIcons
 ```
 
-Add the registration in `MauiProgram`:
-
-```csharp
-var builder = MauiApp.CreateBuilder()
-    .UseMauiApp<App>()
-    .UseIconFonts(); // registers all four font styles
-```
-
 ## 🚀 Getting Started
 
 ### Register
