@@ -38,12 +38,6 @@ jobs:
         with:
           name: nuget
           path: artifacts/*.nupkg
-      - name: Enable NuGet Trusted Publishing
-        uses: nuget/setup-nuget@v1
-        with:
-          auth: true
-      - name: Push to NuGet (Trusted Publishing)
-        env:
-          NUGET_AUTH_TOKEN: ${{ env.NUGET_AUTH_TOKEN }}
+      - name: Push to NuGet
         run: |
-          dotnet nuget push artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
