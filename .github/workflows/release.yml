@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   pack-and-push:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -24,11 +24,14 @@ jobs:
           dotnet-version: |
             8.0.x
             10.0.x
+      - name: Install MAUI workload
+        run: dotnet workload install maui
       - name: Restore
-        run: dotnet restore IconFont.Maui.FluentIcons.sln
+        run: dotnet restore src/IconFont.Maui.FluentIcons/IconFont.Maui.FluentIcons.csproj
       - name: Pack
         run: |
           VERSION=${{ inputs.version != '' && inputs.version || github.ref_name }}
+          VERSION=${VERSION#v}
           dotnet pack src/IconFont.Maui.FluentIcons/IconFont.Maui.FluentIcons.csproj -c Release -p:Version=$VERSION -o artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
