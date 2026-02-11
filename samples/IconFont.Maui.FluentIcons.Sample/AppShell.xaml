@@ -15,6 +15,14 @@
             Title="Filled"
             ContentTemplate="{DataTemplate local:FilledIconsPage}"
             Route="FilledIcons" />
+        <ShellContent
+            Title="Light"
+            ContentTemplate="{DataTemplate local:LightIconsPage}"
+            Route="LightIcons" />
+        <ShellContent
+            Title="Resizable"
+            ContentTemplate="{DataTemplate local:ResizableIconsPage}"
+            Route="ResizableIcons" />
     </TabBar>
 
 </Shell>

@@ -18,5 +18,15 @@
       <FontClass>FluentIconsFilled</FontClass>
       <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
     </IconFontDefinition>
+    <IconFontDefinition Include="Resources/Fonts/FluentSystemIcons-Light.ttf">
+      <FontAlias>FluentIconsLight</FontAlias>
+      <FontClass>FluentIconsLight</FontClass>
+      <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
+    </IconFontDefinition>
+    <IconFontDefinition Include="Resources/Fonts/FluentSystemIcons-Resizable.ttf">
+      <FontAlias>FluentIconsResizable</FontAlias>
+      <FontClass>FluentIconsResizable</FontClass>
+      <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
+    </IconFontDefinition>
   </ItemGroup>
 </Project>

@@ -30,7 +30,9 @@ public class IconsViewModel
                             ?? (cfg.ClassName switch
                             {
                                 nameof(FluentIcons) => typeof(FluentIcons),
-                                "FluentIconsFilled" => typeof(FluentIconsFilled),
+                                nameof(FluentIconsFilled) => typeof(FluentIconsFilled),
+                                nameof(FluentIconsLight) => typeof(FluentIconsLight),
+                                nameof(FluentIconsResizable) => typeof(FluentIconsResizable),
                                 _ => null
                             });
             if (classType is null) continue;
