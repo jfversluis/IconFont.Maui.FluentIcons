@@ -1,0 +1,25 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)IconFont.props" Condition="Exists('$(MSBuildThisFileDirectory)IconFont.props')" />
+
+  <!-- Clear source-relative paths and redefine with package-relative paths -->
+  <ItemGroup>
+    <IconFontDefinition Remove="@(IconFontDefinition)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <IconFontDefinition Include="$(MSBuildThisFileDirectory)Fonts/FluentSystemIcons-Regular.ttf">
+      <FontAlias>FluentIcons</FontAlias>
+      <FontClass>FluentIcons</FontClass>
+      <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
+    </IconFontDefinition>
+    <IconFontDefinition Include="$(MSBuildThisFileDirectory)Fonts/FluentSystemIcons-Filled.ttf">
+      <FontAlias>FluentIconsFilled</FontAlias>
+      <FontClass>FluentIconsFilled</FontClass>
+      <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
+    </IconFontDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiFont Include="@(IconFontDefinition)" Alias="%(IconFontDefinition.FontAlias)" />
+  </ItemGroup>
+</Project>

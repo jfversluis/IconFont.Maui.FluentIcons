@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="IconFont.Maui.FluentIcons.Sample.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:IconFont.Maui.FluentIcons.Sample"
+    Title="IconFont.Maui.FluentIcons.Sample">
+
+    <TabBar>
+        <ShellContent
+            Title="Regular"
+            ContentTemplate="{DataTemplate local:RegularIconsPage}"
+            Route="RegularIcons" />
+        <ShellContent
+            Title="Filled"
+            ContentTemplate="{DataTemplate local:FilledIconsPage}"
+            Route="FilledIcons" />
+    </TabBar>
+
+</Shell>

@@ -1,159 +1,76 @@
-# IconFont.Maui.Template for .NET MAUI
+[![NuGet](https://img.shields.io/nuget/v/IconFont.Maui.FluentIcons.svg?label=NuGet)](https://www.nuget.org/packages/IconFont.Maui.FluentIcons)
 
-IconFont.Maui.Template makes it painless to consume the [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) font inside .NET MAUI applications. It bundles the official font file, registers it at build time using a `buildTransitive` target, and exposes helper APIs plus a sample app that demonstrates how to render glyphs in XAML and C#.
+# IconFont.Maui.FluentIcons
 
-ℹ️ **Customize quickly:** drop your TTF into `src/IconFont.Maui.Template/Resources/Fonts/` and edit `src/IconFont.Maui.Template/IconFont.props` (file, alias, class, namespace). Everything else updates automatically.
+`IconFont.Maui.FluentIcons` ships the `FluentSystemIcons-Regular.ttf` icon font for .NET MAUI. It registers the font across supported targets when you call `UseFluentIcons()` and exposes strongly-typed glyph constants via `FluentIcons` to simplify XAML and C# usage.
 
 ## ✨ Features
+- ⚙️ **One-line setup**: call `builder.UseFluentIcons()` (generated) in `MauiProgram`
+- ➕ **Multiple fonts**: use `builder.UseIconFonts()` to register all, or per-font helpers like `UseFluentIconsFilled()`
+- 🔤 **Strongly-typed glyphs** via `FluentIcons.Regular.*` (and other styles if present)
+- 🧰 **Helper APIs**: `FluentIcons.Create()` for `FontImageSource`
+- 📱 **Supported targets**: Android, iOS, Mac Catalyst, Windows
 
-- 📦 **Drop-in NuGet packaging** – The `IconFont.Maui.Template` library automatically registers the configured font alias for every target (Android, iOS, Mac Catalyst, Windows).
-- 🧱 **Helper APIs** – Use the `FluentIcons` helper class to reference glyphs and create `FontImageSource` instances in code.
-- ⚙️ **Build-time glyph generator** – `IconFont.Maui.Template.SourceGenerator` parses the configured TTF and emits strongly-typed glyph constants during compilation.
-- 🧪 **Sample MAUI app** – `IconFont.Maui.Template.Sample` shows how to consume the library and render icons in XAML without manual font setup.
-- 📄 **MIT licensed** – The library is MIT licensed and redistributes the Fluent UI System Icons font under its MIT license.
+## 📦 Install
+```bash
+dotnet add package IconFont.Maui.FluentIcons
+```
+
+Add the registration in `MauiProgram`:
+
+```csharp
+var builder = MauiApp.CreateBuilder()
+    .UseMauiApp<App>()
+    .UseFluentIcons(); // generated helper
+```
 
 ## 🚀 Getting Started
 
-1. **Install the package** (when published):
-   ```bash
-   dotnet add package IconFont.Maui.Template
-   ```
-2. **Use the `FluentIcons` alias** in XAML:
-   ```xaml
-   xmlns:icons="clr-namespace:IconFontTemplate;assembly=IconFont.Maui.Template"
-   ...
-   <FontImageSource Glyph="{x:Static icons:FluentIcons.Regular.Add24}"
-                    FontFamily="{x:Static icons:FluentIcons.FontFamily}"
-                    Color="#2563EB"
-                    Size="48" />
-   ```
-3. **Or in C#:**
-   ```csharp
-   using IconFontTemplate;
-
-   var imageSource = FluentIcons.Create(FluentIcons.Regular.Calendar24, Colors.Orange, 32);
-   ```
-
-The font is registered automatically via `buildTransitive/IconFont.Maui.Template.targets`, so no changes to your app's `.csproj` are required. For project references or explicit registration, call `builder.UseIconFont()`.
-
-### Customize glyph coverage
-
-Out of the box, every glyph encoded in the Fluent TTF’s Private Use Area is exposed via `FluentIcons.<Style>.GlyphName`. If you need to filter or rename generated output, adjust `FluentGlyphGenerator` to apply your own grouping rules (for example, to emit only a subset or inject friendly descriptions).
-
-> Tip: When Fluent UI ships new icons, update `FluentSystemIcons-Regular.ttf` (or your configured font), drop it into `Resources/Fonts`, and rebuild—the generator will pick up the new glyphs automatically with no extra metadata files.
-
-## 🛠 Customize for your font
-
-1. Drop your font into `src/IconFont.Maui.Template/Resources/Fonts/` (e.g., `MyFont.ttf`).
-2. Edit `src/IconFont.Maui.Template/IconFont.props`:
-   - `IconFontFile` → `MyFont.ttf`
-   - `IconFontAlias` → `MyFont`
-   - *(optional)* `IconFontClass`, `IconFontNamespace`
-3. Build: `dotnet build IconFont.Maui.Template.sln`
-4. Sample app:
-   ```csharp
-   builder.UseMauiApp<App>()
-          .UseIconFont();
-   ```
-5. XAML usage adapts automatically if you keep defaults; otherwise update `xmlns` and class tokens.
-
-### Multi-font example
-```xml
-<ItemGroup>
-   <IconFontDefinition Include="Resources/Fonts/MyIcons-Regular.ttf">
-      <FontAlias>MyIcons</FontAlias>
-      <FontClass>MyIcons</FontClass>
-      <FontNamespace>MyCompany.Icons</FontNamespace>
-   </IconFontDefinition>
-   <IconFontDefinition Include="Resources/Fonts/MyIcons-Filled.ttf">
-      <FontAlias>MyIconsFilled</FontAlias>
-      <FontClass>MyIconsFilled</FontClass>
-      <FontNamespace>MyCompany.Icons</FontNamespace>
-   </IconFontDefinition>
-</ItemGroup>
-```
-In `MauiProgram`:
+### Register
 ```csharp
-builder.UseIconFonts(); // registers all fonts
-// or builder.UseMyIcons(); builder.UseMyIconsFilled();
+var builder = MauiApp.CreateBuilder()
+    .UseMauiApp<App>()
+    .UseFluentIcons();
 ```
 
-🔒 **Licensing checklist (for authors):**
-- **Verify** your font’s license permits **redistribution** (NuGet/package) and use in apps.
-- **Update** `NOTICE.md` with font **name**, **author**, **source URL**, and **license text**.
-- **Align** `README_Consumer.md` placeholders (font license/link/attribution) with your font.
-- If the font license isn’t MIT, keep code under MIT but include the font license via `NOTICE.md` (packed) or `PackageLicenseFile`.
+### XAML usage
+```xaml
+xmlns:icons="clr-namespace:IconFont.Maui.FluentIcons;assembly=IconFont.Maui.FluentIcons"
 
-## 🧑‍💻 Consumer README template
-
-- Use `README_Consumer.md` as a starting point for your NuGet-facing README. Replace placeholders (package ID, namespace, class, font file, license) before publishing.
-- **Recommended:** rename `README_Consumer.md` to `README.md` in your fork and update your `.csproj`:
-   ```xml
-   <PackageReadmeFile>README.md</PackageReadmeFile>
-   <None Include="..\\..\\README.md" Pack="true" PackagePath="" />
-   ```
-- Alternatively, keep `README_Consumer.md` and set in your `.csproj`:
-   ```xml
-   <PackageReadmeFile>README_Consumer.md</PackageReadmeFile>
-   ```
-   Ensure it’s packed:
-   ```xml
-   <None Include="README_Consumer.md" Pack="true" PackagePath="" />
-   ```
-
-
-## 📦 Publishing
-
-- This template is ready for **NuGet Trusted Publishing** (OIDC-based, no API keys).
-- GitHub Actions release workflow uses `nuget/setup-nuget@v1` with `auth: true` and `id-token` permissions.
-- See: https://blog.verslu.is/nuget/trusted-publishing-easy-setup/
-
-## 🏗️ Repository Layout
-
-```
-IconFont/
-├── IconFont.Maui.Template.sln
-├── .github/
-│   └── copilot-instructions.md
-├── src/
-│   ├── IconFont.Maui.Template/
-|   │   ├── IconFont.props
-|   │   ├── IconFont.Maui.Template.csproj
-|   │   ├── FluentIcons.cs
-|   │   ├── Hosting/IconFontTemplateBuilderExtensions.cs
-|   │   ├── FluentIconsInitializer.cs
-|   │   ├── Resources/Fonts/FluentSystemIcons-Regular.ttf
-|   │   └── buildTransitive/IconFont.Maui.Template.targets
-│   └── IconFont.Maui.Template.SourceGenerator/
-│       ├── IconFont.Maui.Template.SourceGenerator.csproj
-│       └── FluentGlyphGenerator.cs
-└── samples/
-      └── IconFont.Maui.Template.Sample/
-         ├── IconFont.Maui.Template.Sample.csproj
-        └── MainPage.xaml (+ code-behind)
+<FontImageSource Glyph="{x:Static icons:FluentIcons.Regular.Add24}"
+                 FontFamily="{x:Static icons:FluentIcons.FontFamily}"
+                 Color="#2563EB"
+                 Size="32" />
 ```
 
-## 🧪 Building & Testing
+### C# usage
+```csharp
+using IconFont.Maui.FluentIcons;
 
-```bash
-# Restore and build all targets
-cd IconFont
- dotnet build IconFont.Maui.Template.sln
-
-# Run the sample app (choose a platform)
-dotnet build samples/IconFont.Maui.Template.Sample/IconFont.Maui.Template.Sample.csproj -t:Run -f net10.0-ios -r iossimulator-arm64
-dotnet build samples/IconFont.Maui.Template.Sample/IconFont.Maui.Template.Sample.csproj -t:Run -f net10.0-maccatalyst
-dotnet build samples/IconFont.Maui.Template.Sample/IconFont.Maui.Template.Sample.csproj -t:Run -f net10.0-android
+// Create a FontImageSource for any glyph
+var source = FluentIcons.Create(FluentIcons.Regular.Add24, Colors.Orange, 32);
 ```
 
-> **Note:** The sample uses the regular Fluent font. If you ship filled/other styles, include additional `.targets` files and alias names.
+> **Tip:** Glyph names follow the upstream font. If the font adds/changes glyphs, updating the TTF and rebuilding regenerates this API.
 
-## 📚 Licensing
+## 📋 Styles & glyphs
+The default generator emits one class per style (e.g., `Regular`, `Filled`). Example members:
 
-- **Library**: MIT License (see [`LICENSE`](LICENSE)).
-- **Fluent UI System Icons font**: MIT License © Microsoft Corporation. See [`NOTICE.md`](NOTICE.md) for attribution and upstream license text.
-- This project is not affiliated with or endorsed by Microsoft. Trademarks belong to their respective owners.
+- `FluentIcons.Regular.Add24`
+- `FluentIcons.Filled.Home24`
 
-## 🙌 Contributing
+## 🧩 Platforms
+| Platform | Minimum |
+|----------|---------|
+| Android  | 21+     |
+| iOS      | 15+     |
+| macOS    | 12+     |
+| Windows  | 10 1809 |
 
-Pull requests are welcome! Please ensure any new icons are sourced from `main` in the Fluent UI repository and that licensing headers remain intact.
+## 📄 License
+- **Library:** MIT
+- **Font:** MIT (see [license](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE))
+
+## 🙏 Attribution
+- Upstream font: MIT © Microsoft Corporation
+- This project is not affiliated with or endorsed by Microsoft.
