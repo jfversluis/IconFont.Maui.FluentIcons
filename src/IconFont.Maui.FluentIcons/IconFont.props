@@ -2,7 +2,7 @@
   <PropertyGroup>
     <IconFontFile>FluentSystemIcons-Regular.ttf</IconFontFile>
     <IconFontAlias>FluentIcons</IconFontAlias>
-    <IconFontClass>FluentIcons</IconFontClass>
+    <IconFontClass>FluentIconsRegular</IconFontClass>
     <IconFontNamespace>IconFont.Maui.FluentIcons</IconFontNamespace>
   </PropertyGroup>
 
@@ -10,7 +10,7 @@
   <ItemGroup>
     <IconFontDefinition Include="Resources/Fonts/FluentSystemIcons-Regular.ttf">
       <FontAlias>FluentIcons</FontAlias>
-      <FontClass>FluentIcons</FontClass>
+      <FontClass>FluentIconsRegular</FontClass>
       <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
     </IconFontDefinition>
     <IconFontDefinition Include="Resources/Fonts/FluentSystemIcons-Filled.ttf">

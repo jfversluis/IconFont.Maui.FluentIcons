@@ -9,7 +9,7 @@
   <ItemGroup>
     <IconFontDefinition Include="$(MSBuildThisFileDirectory)Fonts/FluentSystemIcons-Regular.ttf">
       <FontAlias>FluentIcons</FontAlias>
-      <FontClass>FluentIcons</FontClass>
+      <FontClass>FluentIconsRegular</FontClass>
       <FontNamespace>IconFont.Maui.FluentIcons</FontNamespace>
     </IconFontDefinition>
     <IconFontDefinition Include="$(MSBuildThisFileDirectory)Fonts/FluentSystemIcons-Filled.ttf">
