@@ -46,7 +46,7 @@ builder.UseFluentIconsResizable(); // Resizable only
 xmlns:icons="clr-namespace:IconFont.Maui.FluentIcons;assembly=IconFont.Maui.FluentIcons"
 
 <FontImageSource Glyph="{x:Static icons:FluentIconsRegular.Add24}"
-                 FontFamily="{x:Static icons:FluentIcons.FontFamily}"
+                 FontFamily="{x:Static icons:FluentIconsRegular.FontFamily}"
                  Color="#2563EB"
                  Size="32" />
 ```
