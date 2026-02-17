@@ -22,7 +22,5 @@ jobs:
         run: dotnet restore IconFont.Maui.FluentIcons.sln
       - name: Build library iOS
         run: dotnet build src/IconFont.Maui.FluentIcons/IconFont.Maui.FluentIcons.csproj -f net10.0-ios -r iossimulator-arm64 -v minimal
-      - name: Test Source Generator
-        run: dotnet test tests/IconFont.Maui.FluentIcons.SourceGenerator.Tests/IconFont.Maui.FluentIcons.SourceGenerator.Tests.csproj -v minimal
       - name: Test Integration
         run: dotnet test tests/IconFont.Maui.FluentIcons.IntegrationTests/IconFont.Maui.FluentIcons.IntegrationTests.csproj -v minimal

@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls.Internals;
 namespace IconFont.Maui.FluentIcons;
 
 [Preserve(AllMembers = true)]
-public static partial class FluentIconsLight
+public static class FluentIconsLight
 {
     static FluentIconsLight() { }
     // Font alias for light font (from IconFontConfigs)

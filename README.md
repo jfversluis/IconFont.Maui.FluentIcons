@@ -6,7 +6,7 @@
 
 | Font | File | Class |
 |------|------|-------|
-| Regular | `FluentSystemIcons-Regular.ttf` | `FluentIcons` |
+| Regular | `FluentSystemIcons-Regular.ttf` | `FluentIconsRegular` |
 | Filled | `FluentSystemIcons-Filled.ttf` | `FluentIconsFilled` |
 | Light | `FluentSystemIcons-Light.ttf` | `FluentIconsLight` |
 | Resizable | `FluentSystemIcons-Resizable.ttf` | `FluentIconsResizable` |
@@ -15,7 +15,7 @@ It registers the fonts across supported targets when you call `UseIconFonts()` (
 
 ## ✨ Features
 - ⚙️ **One-line setup**: call `builder.UseIconFonts()` to register all fonts, or per-font helpers like `UseFluentIcons()`, `UseFluentIconsFilled()`, etc.
-- 🔤 **Strongly-typed glyphs** via `FluentIcons.Regular.*`, `FluentIconsFilled.Filled.*`, `FluentIconsLight.Light.*`, `FluentIconsResizable.Resizable.*`
+- 🔤 **Strongly-typed glyphs** via flat classes: `FluentIconsRegular.Add24`, `FluentIconsFilled.Home24`, etc.
 - 🧰 **Helper APIs**: `FluentIcons.Create()` for `FontImageSource`
 - 📱 **Supported targets**: Android, iOS, Mac Catalyst, Windows
 
@@ -45,7 +45,7 @@ builder.UseFluentIconsResizable(); // Resizable only
 ```xaml
 xmlns:icons="clr-namespace:IconFont.Maui.FluentIcons;assembly=IconFont.Maui.FluentIcons"
 
-<FontImageSource Glyph="{x:Static icons:FluentIcons.Regular.Add24}"
+<FontImageSource Glyph="{x:Static icons:FluentIconsRegular.Add24}"
                  FontFamily="{x:Static icons:FluentIcons.FontFamily}"
                  Color="#2563EB"
                  Size="32" />
@@ -56,20 +56,20 @@ xmlns:icons="clr-namespace:IconFont.Maui.FluentIcons;assembly=IconFont.Maui.Flue
 using IconFont.Maui.FluentIcons;
 
 // Create a FontImageSource for any glyph
-var source = FluentIcons.Create(FluentIcons.Regular.Add24, Colors.Orange, 32);
+var source = FluentIcons.Create(FluentIconsRegular.Add24, Colors.Orange, 32);
 ```
 
 > **Tip:** Glyph names follow the upstream font. If the font adds/changes glyphs, updating the TTF and rebuilding regenerates this API.
 
 ## 📋 Styles & Glyphs
-The source generator emits one class per font, each with nested style classes:
+The source generator emits flat top-level classes for XAML `{x:Static}` compatibility:
 
-| Class | Nested Style | Example |
-|-------|-------------|---------|
-| `FluentIcons` | `Regular` | `FluentIcons.Regular.Add24` |
-| `FluentIconsFilled` | `Filled` | `FluentIconsFilled.Filled.Home24` |
-| `FluentIconsLight` | `Light` | `FluentIconsLight.Light.Star24` |
-| `FluentIconsResizable` | `Resizable` | `FluentIconsResizable.Resizable.Add20` |
+| Class | Example |
+|-------|---------|
+| `FluentIconsRegular` | `FluentIconsRegular.Add24` |
+| `FluentIconsFilled` | `FluentIconsFilled.Home24` |
+| `FluentIconsLight` | `FluentIconsLight.Star24` |
+| `FluentIconsResizable` | `FluentIconsResizable.Add20` |
 
 ## 🧩 Platforms
 | Platform | Minimum |

@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls.Internals;
 namespace IconFont.Maui.FluentIcons;
 
 [Preserve(AllMembers = true)]
-public static partial class FluentIconsResizable
+public static class FluentIconsResizable
 {
     static FluentIconsResizable() { }
     // Font alias for resizable font (from IconFontConfigs)

@@ -2,7 +2,7 @@ using Microsoft.Maui.Hosting;
 
 namespace IconFont.Maui.FluentIcons;
 
-public static partial class FluentIconsBuilderExtensions
+public static partial class IconFontBuilderExtensions
 {
     /// <summary>
     /// Registers the Fluent icon font alias. Useful for project references if you want explicit initialization.

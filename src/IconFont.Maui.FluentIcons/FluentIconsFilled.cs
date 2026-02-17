@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace IconFont.Maui.FluentIcons;
 
 [Preserve(AllMembers = true)]
-public static partial class FluentIconsFilled
+public static class FluentIconsFilled
 {
     static FluentIconsFilled() { }
     // Font alias for filled font (from IconFontConfigs)
