@@ -35,9 +35,9 @@ var builder = MauiApp.CreateBuilder()
 
 Or register individual fonts:
 ```csharp
-builder.UseFluentIcons();        // Regular only
-builder.UseFluentIconsFilled();  // Filled only
-builder.UseFluentIconsLight();   // Light only
+builder.UseFluentIconsRegular();   // Regular only
+builder.UseFluentIconsFilled();    // Filled only
+builder.UseFluentIconsLight();     // Light only
 builder.UseFluentIconsResizable(); // Resizable only
 ```
 
