@@ -5,9 +5,9 @@ namespace IconFont.Maui.FluentIcons;
 public static partial class IconFontBuilderExtensions
 {
     /// <summary>
-    /// Registers the Fluent icon font alias. Useful for project references if you want explicit initialization.
+    /// Registers all Fluent UI System Icon font styles (Regular, Filled, Light, Resizable).
     /// </summary>
-    public static MauiAppBuilder UseIconFont(this MauiAppBuilder builder)
+    public static MauiAppBuilder UseFluentIcons(this MauiAppBuilder builder)
     {
         builder.ConfigureFonts(fonts =>
         {
@@ -19,7 +19,8 @@ public static partial class IconFontBuilderExtensions
         return builder;
     }
 
-    public static MauiAppBuilder UseIconFont(this MauiAppBuilder builder, string fontClass)
+    // Called by generated per-font helpers (UseFluentIconsRegular, etc.)
+    internal static MauiAppBuilder UseIconFont(this MauiAppBuilder builder, string fontClass)
     {
         var cfg = System.Array.Find(IconFontConfigs.All, x => x.ClassName == fontClass);
         if (cfg is not null)
@@ -28,4 +29,7 @@ public static partial class IconFontBuilderExtensions
         }
         return builder;
     }
+
+    // Kept for backwards compatibility with generated UseIconFonts() alias
+    internal static MauiAppBuilder UseIconFont(this MauiAppBuilder builder) => builder.UseFluentIcons();
 }

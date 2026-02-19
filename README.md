@@ -11,10 +11,10 @@
 | Light | `FluentSystemIcons-Light.ttf` | `FluentIconsLight` |
 | Resizable | `FluentSystemIcons-Resizable.ttf` | `FluentIconsResizable` |
 
-It registers the fonts across supported targets when you call `UseIconFonts()` (or individual helpers) and exposes strongly-typed glyph constants to simplify XAML and C# usage.
+It registers the fonts across supported targets when you call `UseFluentIcons()` (or individual helpers) and exposes strongly-typed glyph constants to simplify XAML and C# usage.
 
 ## ✨ Features
-- ⚙️ **One-line setup**: call `builder.UseIconFonts()` to register all fonts, or per-font helpers like `UseFluentIcons()`, `UseFluentIconsFilled()`, etc.
+- ⚙️ **One-line setup**: call `builder.UseFluentIcons()` to register all fonts, or per-font helpers like `UseFluentIconsRegular()`, `UseFluentIconsFilled()`, etc.
 - 🔤 **Strongly-typed glyphs** via flat classes: `FluentIconsRegular.Add24`, `FluentIconsFilled.Home24`, etc.
 - 🧰 **Helper APIs**: `FluentIcons.Create()` for `FontImageSource`
 - 📱 **Supported targets**: Android, iOS, Mac Catalyst, Windows
@@ -30,7 +30,7 @@ dotnet add package IconFont.Maui.FluentIcons
 ```csharp
 var builder = MauiApp.CreateBuilder()
     .UseMauiApp<App>()
-    .UseIconFonts(); // registers all four font styles
+    .UseFluentIcons(); // registers all four font styles
 ```
 
 Or register individual fonts:
