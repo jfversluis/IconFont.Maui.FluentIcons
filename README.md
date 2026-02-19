@@ -59,7 +59,7 @@ using IconFont.Maui.FluentIcons;
 var source = FluentIcons.Create(FluentIconsRegular.Add24, Colors.Orange, 32);
 ```
 
-> **Tip:** Glyph names follow the upstream font. If the font adds/changes glyphs, updating the TTF and rebuilding regenerates this API.
+> **Tip:** Glyph names follow the upstream font. If the font adds/changes glyphs, updating the font file and rebuilding regenerates this API.
 
 ## 📋 Styles & Glyphs
 The source generator emits flat top-level classes for XAML `{x:Static}` compatibility:
